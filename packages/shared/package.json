@@ -14,7 +14,8 @@
     "./application/company/use-cases/GenerateCompanyReportUseCase": "./application/company/use-cases/GenerateCompanyReportUseCase.ts",
     "./application/company/dtos/CompanyReportDTO": "./application/company/dtos/CompanyReportDTO.ts",
     "./types/*": "./types/*.ts",
-    "./utils/*": "./utils/*.ts"
+    "./utils/*": "./utils/*.ts",
+    "./mocks/*": "./mocks/*.ts"
   },
   "scripts": {
     "test": "vitest run",
@@ -22,7 +23,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.json"
   },
   "peerDependencies": {
-    "react": "^18.3.0"
+    "react": "^18.3.0 || ^19.0.0"
   },
   "devDependencies": {
     "@types/react": "^18.3.5",

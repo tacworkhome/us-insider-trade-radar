@@ -9,3 +9,6 @@ coverage/
 .env
 .env.local
 .env.*.local
+*.tsbuildinfo
+.expo/
+apps/mobile/.expo/

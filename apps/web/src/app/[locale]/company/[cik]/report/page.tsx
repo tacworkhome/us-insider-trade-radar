@@ -3,7 +3,7 @@ import { getTranslations } from 'next-intl/server'
 import { generateCompanyReport } from '@radar/shared/application/company/use-cases/GenerateCompanyReportUseCase'
 import { convertToInsiderTrades } from '@radar/shared/utils/insider-trade'
 import { formatCurrency, formatNumber } from '@radar/shared/utils/format'
-import { getCompanyMock } from '@/mocks/company'
+import { getCompanyMock } from '@radar/shared/mocks/company'
 import { StockLineChart } from '@/components/charts/StockLineChart'
 import { InsiderActivityChart } from '@/components/charts/InsiderActivityChart'
 

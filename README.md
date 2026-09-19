@@ -12,9 +12,11 @@ API calls**; everything runs on mock JSON and an in-memory repository.
 - **next-intl** for i18n (English locale wired end-to-end; add another locale by
   dropping a `locales/<code>/common.json` file)
 - **lightweight-charts** for the price/insider-trade chart, **Recharts** for the
-  monthly buy/sell bar chart
+  monthly buy/sell bar chart (web)
+- **Expo** (React Native, Expo Router) for `apps/mobile`, with
+  **react-native-gifted-charts** for the equivalent mobile charts
 - **Vitest** for unit tests
-- **pnpm workspaces** monorepo: `apps/web` + `packages/shared`
+- **pnpm workspaces** monorepo: `apps/web` + `apps/mobile` + `packages/shared`
 
 ## Architecture
 
@@ -104,13 +106,47 @@ apps/web/                      Next.js app router
   src/app/[locale]/            routed pages (signals, company report, watchlist)
   src/components/charts/       StockLineChart, InsiderActivityChart
   src/features/watchlist/      watchlist UI components
-  src/mocks/                   fixture data (signals, company/price/transactions)
+apps/mobile/                   Expo / React Native app (Expo Go compatible)
+  app/                         expo-router screens (tabs: watchlist, signals; company/[cik] detail)
+  src/presentation/watchlist/  thin RN wrapper around the shared ViewModel hook
 packages/shared/
   domain/watchlist/            entity, value objects, repository interface, errors
   application/watchlist/       use cases, DTOs, mapper, limit service
   application/company/         rule-based report use case (demo weights)
   infrastructure/watchlist/    in-memory repository implementations
   presentation/watchlist/      ViewModel hook + DI container
+  mocks/                       fixture data (signals, company/price/transactions) — shared by web and mobile
   types/, utils/               shared formatting/domain-adjacent helpers
 locales/en/                    i18n message catalog
+```
+
+## Cross-platform: apps/web + apps/mobile
+
+`apps/mobile` is a standard Expo (Expo Go compatible, no custom dev client,
+no Firebase, no native modules) app that renders the same three slices as
+`apps/web` — Watchlist, Signals, and the Company report — on top of the
+exact same `packages/shared` domain and application layers:
+
+- **Domain + application are 100% shared, unchanged.** `apps/mobile`
+  imports `useWatchlistViewModel`, the watchlist use cases, the in-memory
+  `InMemoryWatchlistRepository`, the company report use case, and the
+  `mockClusterBuySignals` / `getCompanyMock` fixtures straight from
+  `packages/shared` — nothing is re-typed or re-implemented for mobile.
+- **Only infrastructure/presentation/UI differ per platform.** Each app
+  wires its own thin ViewModel wrapper (`apps/mobile/src/presentation/watchlist/useWatchlist.ts`
+  vs. `apps/web`'s direct hook usage) and its own UI: React Native
+  `View`/`FlatList` screens with `expo-router` instead of Next.js pages,
+  and `react-native-gifted-charts` (pure JS/SVG, Expo Go-compatible)
+  instead of `lightweight-charts`/`recharts` for the price and monthly
+  buy/sell charts.
+- A real deployment would swap `InMemoryWatchlistRepository` for a
+  Supabase-backed one in `packages/shared/infrastructure` — both apps
+  would pick up the change automatically without touching a single
+  screen or use case.
+
+Run it:
+
+```bash
+cd apps/mobile
+npx expo start       # scan the QR code with Expo Go, or press `w` for web
 ```

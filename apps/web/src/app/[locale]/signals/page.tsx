@@ -1,5 +1,5 @@
 import { getTranslations } from 'next-intl/server'
-import { mockClusterBuySignals } from '@/mocks/signals'
+import { mockClusterBuySignals } from '@radar/shared/mocks/signals'
 import { SignalsTable } from './SignalsTable'
 
 export default async function SignalsPage() {
