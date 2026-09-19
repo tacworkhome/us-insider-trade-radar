@@ -1,4 +1,4 @@
-# US Insider Trade Radar (demo)
+# US Insider Trade Radar
 
 An architecture showcase extracted from a real production SEC Form 4 insider-trading
 signal product. All companies, insiders, and transactions shown are fictional
