@@ -1,0 +1,73 @@
+{
+  "nav": {
+    "home": "Home",
+    "signals": "Signals",
+    "watchlist": "Watchlist",
+    "company": "Company"
+  },
+  "common": {
+    "tables": {
+      "company": "Company",
+      "insider": "Insider",
+      "title": "Title",
+      "shares": "Shares",
+      "value": "Value",
+      "tradeDate": "Trade Date",
+      "totalValue": "Total Value"
+    },
+    "loading": "Loading...",
+    "viewDetails": "View details"
+  },
+  "home": {
+    "title": "US Insider Trade Radar",
+    "subtitle": "Demo",
+    "tagline": "An architecture showcase extracted from a real production insider-trading signal product. All data on this site is mock/fixture data.",
+    "cta": {
+      "signals": "Browse signals",
+      "company": "View a company report",
+      "watchlist": "Try the watchlist"
+    }
+  },
+  "signals": {
+    "page": {
+      "title": "Cluster Buy Signals",
+      "description": "Rule-based signals highlighting when two or more insiders buy the same stock in a short window. Demo data only.",
+      "noSignals": "No signals to show yet."
+    },
+    "table": {
+      "signalCount": "{count, plural, one {# signal} other {# signals}}",
+      "buyers": "Buyers",
+      "insidersCount": "{count, plural, one {# insider} other {# insiders}}"
+    },
+    "filters": {
+      "all": "All",
+      "minBuyers": "Min. buyers",
+      "sortBy": "Sort by",
+      "confidence": "Confidence",
+      "totalAmount": "Total amount"
+    }
+  },
+  "company": {
+    "report": {
+      "title": "Insider Activity Report",
+      "confidenceScore": "Confidence score",
+      "signals": "Signals detected",
+      "weightsDisclaimer": "Demo weights — simplified for illustration, not the production scoring model.",
+      "netActivity": "Net insider activity",
+      "topTransactions": "Recent open-market buys"
+    }
+  },
+  "watchlist": {
+    "page": {
+      "title": "Watchlist",
+      "empty": "Your watchlist is empty. Add a company or insider to start tracking them.",
+      "companies": "Companies",
+      "insiders": "Insiders"
+    },
+    "actions": {
+      "add": "Add to watchlist",
+      "remove": "Remove",
+      "watching": "Watchlisted"
+    }
+  }
+}

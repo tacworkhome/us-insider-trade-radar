@@ -1,0 +1,22 @@
+{
+  "name": "us-insider-trade-radar",
+  "version": "0.1.0",
+  "private": true,
+  "description": "US Insider Trade Radar (demo) — architecture showcase for a SEC Form 4 insider-trading signal product, extracted and anonymized with mock data.",
+  "workspaces": [
+    "apps/*",
+    "packages/*"
+  ],
+  "scripts": {
+    "dev": "pnpm --filter web dev",
+    "build": "pnpm --filter web build",
+    "start": "pnpm --filter web start",
+    "test": "pnpm --filter @radar/shared test",
+    "typecheck": "pnpm -r typecheck"
+  },
+  "devDependencies": {
+    "typescript": "^5.5.4"
+  },
+  "packageManager": "pnpm@10.28.0",
+  "license": "MIT"
+}

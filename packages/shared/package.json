@@ -1,0 +1,32 @@
+{
+  "name": "@radar/shared",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "./index.ts",
+  "types": "./index.ts",
+  "exports": {
+    ".": "./index.ts",
+    "./domain/watchlist": "./domain/watchlist/index.ts",
+    "./application/watchlist": "./application/watchlist/index.ts",
+    "./infrastructure/watchlist": "./infrastructure/watchlist/index.ts",
+    "./presentation/watchlist": "./presentation/watchlist/index.ts",
+    "./application/company/use-cases/GenerateCompanyReportUseCase": "./application/company/use-cases/GenerateCompanyReportUseCase.ts",
+    "./application/company/dtos/CompanyReportDTO": "./application/company/dtos/CompanyReportDTO.ts",
+    "./types/*": "./types/*.ts",
+    "./utils/*": "./utils/*.ts"
+  },
+  "scripts": {
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit -p tsconfig.json"
+  },
+  "peerDependencies": {
+    "react": "^18.3.0"
+  },
+  "devDependencies": {
+    "@types/react": "^18.3.5",
+    "typescript": "^5.5.4",
+    "vitest": "^2.0.5"
+  }
+}
